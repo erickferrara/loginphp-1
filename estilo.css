@@ -62,3 +62,13 @@ body{
     cursor: pointer;
     margin: 12px 0;
 }
+
+/********ESTILO DO ERRO*********/
+.erro li{
+    color:white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0.4;
+    list-style-type: none;
+}
