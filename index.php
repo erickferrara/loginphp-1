@@ -14,18 +14,19 @@ if(isset($_POST['entrar'])){
     if(empty($login) || empty($senha)){
         $erros[] = "Por favor, preencha os campos para efetuar login.";
     }else{
-        $sql = "SELECT login FROM usuarios WHERE login = '$login'";
+        $sql = "SELECT login FROM usuarios WHERE login = '$login' ";
         $resultado = mysqli_query($connect, $sql);
 
         if(mysqli_num_rows($resultado) > 0){
             $senha = md5($senha);
-            $sql = "SELECT * FROM usuarios WHERE login = '$login' and senha = '$senha'";
+            $sql = "SELECT * FROM usuarios WHERE login = '$login' AND senha = '$senha'";
             $resultado = mysqli_query($connect, $sql);
 
             if(mysqli_num_rows($resultado) == 1){
+                $erro[] = "deu certo";
                 $dados = mysqli_fetch_array($resultado);
                 mysqli_close($connect);
-                $_SESSION['logado'] == true;
+                $_SESSION['logado'] = true;
                 $_SESSION['id_usuario'] = $dados['id'];
                 header('Location: home.php');
             }else{
